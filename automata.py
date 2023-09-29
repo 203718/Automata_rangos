@@ -4,18 +4,38 @@ class Automata:
     def __init__(self):
         self.estado_actual = "q0"
         self.transiciones = {
-            "q0": {"567": "q1"},
+            "q0": {"5": "q1", "6": "q11", "7": "q21"},
             "q1": {"-": "q2"},
-            "q2": {"W": "q3", "X": "q4"},
-            "q3": {"Z": "q5"},
-            "q5": {"-": "q7"},
-            "q7": {"0": "q8", "123456789": "q9"},
-            "q8": {"123456789": "q10"},
-            "q10": {"DEFG": "aceptacion"},
-            "q4": {"ABCDEFGHIJKLMNOPQRSTUVWX": "q6"},
-            "q6": {"-": "q7"},
-            "q9": {"0123456789": "q11"},
-            "q11": {"DEFG": "aceptacion"}
+            "q2": {"WXYZ": "q3"},
+            "q3": {"Z": "q4"},
+            "q4": {"-": "q5"},
+            "q5": {"0": "q6", "123456789": "q7"},
+            "q6": {"123456789": "q8"},
+            "q7": {"0123456789": "q9"},
+            "q8": {"DEFGHIJKLMNOPQRSTUVWXYZ": "aceptacion"},
+            "q9": {"DEFGHIJKLMNOPQRSTUVWXYZ": "aceptacion"},
+
+
+            "q11": {"-": "q12"},
+            "q12": {"ABCDEFGHIJKLMNOPQRSTUVWXYZ": "q13"},
+            "q13": {"ABCDEFGHIJKLMNOPQRSTUVWXYZ": "q14"},
+            "q14": {"-": "q15"},
+            "q15": {"0": "q16", "123456789": "q17"},
+            "q16": {"123456789": "q18"},
+            "q17": {"0123456789": "q19"},
+            "q18": {"ABCDEFGHIJKLMNOPQRSTUVWXYZ": "aceptacion"},
+            "q19": {"ABCDEFGHIJKLMNOPQRSTUVWXYZ": "aceptacion"},
+
+
+            "q21": {"-": "q22"},
+            "q22": {"ABCDEFGHIJKLMNOPQRSTUVWX": "q23"},
+            "q23": {"ABCDEFGHIJKLMNOPQRSTUVWX": "q24"},
+            "q24": {"-": "q25"},
+            "q25": {"0": "q26", "123456789": "q27"},
+            "q26": {"123456789": "q28"},
+            "q27": {"0123456789": "q29"},
+            "q28": {"ABCDEFG": "aceptacion"},
+            "q29": {"ABCDEFG": "aceptacion"},
         }
 
     def transicion(self, simbolo):
