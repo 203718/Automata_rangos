@@ -15,7 +15,6 @@ class Automata:
             "q8": {"DEFGHIJKLMNOPQRSTUVWXYZ": "aceptacion"},
             "q9": {"DEFGHIJKLMNOPQRSTUVWXYZ": "aceptacion"},
 
-
             "q11": {"-": "q12"},
             "q12": {"ABCDEFGHIJKLMNOPQRSTUVWXYZ": "q13"},
             "q13": {"ABCDEFGHIJKLMNOPQRSTUVWXYZ": "q14"},
@@ -25,7 +24,6 @@ class Automata:
             "q17": {"0123456789": "q19"},
             "q18": {"ABCDEFGHIJKLMNOPQRSTUVWXYZ": "aceptacion"},
             "q19": {"ABCDEFGHIJKLMNOPQRSTUVWXYZ": "aceptacion"},
-
 
             "q21": {"-": "q22"},
             "q22": {"ABCDEFGHIJKLMNOPQRSTUVWX": "q23"},
@@ -66,6 +64,9 @@ class AutomataApp:
         self.validate_button = tk.Button(root, text="Validar", command=self.validar_cadena)
         self.validate_button.pack()
 
+        self.validate_another_button = tk.Button(root, text="Validar Otra Cadena", command=self.validar_otra_cadena)
+        self.validate_another_button.pack()
+
         self.transitions_label = tk.Label(root, text="Transiciones:")
         self.transitions_label.pack()
 
@@ -83,6 +84,11 @@ class AutomataApp:
         self.transitions_text.insert(tk.END, f"Cadena {'valida' if self.automata.estado_actual == 'aceptacion' else 'invalida'}\n")
 
         self.entry.delete(0, tk.END)
+
+    def validar_otra_cadena(self):
+        self.automata.estado_actual = "q0"  # Reiniciar el autómata
+        self.entry.delete(0, tk.END)
+        self.transitions_text.delete("1.0", tk.END)
 
 if __name__ == "__main__":
     root = tk.Tk()
